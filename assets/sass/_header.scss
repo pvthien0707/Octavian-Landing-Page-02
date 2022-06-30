@@ -1,0 +1,156 @@
+@use './mixin' as *;
+@use './variables' as *;
+@use './breakpoint' as *;
+
+.header {
+    padding: 40px 0;
+
+    &-container {
+        @include flex(center, space-between);
+        position: relative;
+    }
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 2.2rem;
+        font-weight: 600;
+        font-family: $third-font;
+        color: $logo-color;
+        text-transform: capitalize;
+    }
+
+    &-tool {
+        display: flex;
+        align-items: center;
+        gap: 75px;
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: $secondary-color;
+
+        &__phone {
+            span {
+                font-weight: 600;
+                margin-left: 10px;
+            }
+        }
+
+
+        &__menu:hover,
+        &__search:hover {
+           cursor: pointer;
+        }
+    }
+
+    &-menu {
+        position: absolute;
+        right: -10px;
+        top: calc(100% + 5px);
+        width: 30%;
+        height: 100vh;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px 0;
+        z-index: 2;
+        background-color: $secondary-color;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all .3s linear;
+        
+        &__item {
+            a {
+                color: $btn-color;
+                font-weight: 600;
+                text-transform: capitalize;
+            }
+
+            &:first-child {
+                margin-top: 50px;
+            }
+
+            &:hover a{
+                color: $primary-color;
+            }
+        }
+
+        &.active {
+            opacity: .7;
+            transform: translateX(0);   
+        }
+    }
+
+    &__search {
+        position: absolute;
+        top: 90%;
+        right: 3%;
+        z-index: 2;
+        padding: 5px 10px;
+        width: 30%;
+        border: 2px solid rgba($primary-color, .5);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        transition: all .1s linear;
+
+        &.active {
+            opacity: 1;
+            top: 100%;
+        }
+        
+        input {
+            flex-grow: 1;
+            outline: none;
+            border: none;
+
+            &::placeholder {
+                color: $primary-color;
+                font-style: italic;
+                
+            }
+        }   
+
+        img {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+}
+
+// Responsive
+
+@include tablet-screen {
+    .header {
+        &-tool {
+            gap: 40px;
+        }
+    }
+}
+
+@include mobile-screen {
+    .header {   
+        padding: 20px 0 50px;
+        
+        &-tool__phone {
+            display: none;
+        }
+
+        &-menu {
+            width: 97vw;
+        }
+
+        &__search {
+            width: 100%;
+            right: 0;
+
+            &.active {
+                top: calc(100% + 10px);
+            } 
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@use './variables' as *;
+@use './function' as *;
+@use './breakpoint' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $primary-font;
+    font-size: 1.8rem;
+    color: $primary-color;
+    line-height: 1;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;   
+    object-fit: cover;
+}
+
+.wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: $wrapper-bg-color;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.btn {
+    height: 55px;
+    padding: 0 70px;
+    display: flex;
+    align-items: center;
+    background-color: $btn-bg-color;
+    border: 0;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $btn-color;
+    cursor: pointer;
+
+    &--contact {
+        height: 64px;
+        background-image: linear-gradient(to right, #f475a1, #ffac3c);
+    }
+}
+
+.caption {
+    font-family: $secondary-font;
+    font-size: 3.6rem;
+    font-weight: 800;
+    line-height: lineHeight(36px, 56px);
+    color: $secondary-color;
+    margin-bottom: 40px;
+
+    &--small {
+        font-size: 2.2rem;
+        line-height: lineHeight(22px, 35px);
+        margin-bottom: 20px;
+    }
+}
+
+.text {
+    line-height: lineHeight(18px, 34px);
+}
+
+.small-text {
+    font-size: 1.4rem;
+    line-height: lineHeight(1.4px, 34px);
+}
+
+// 
+// .portfolio,
+// .partner,
+// .team,
+// .blog,
+// .contact,
+// .footer {
+//     display: none;
+// }
+
+// Responsive
+
+@include tablet-screen {
+    .caption {
+        font-size: 3.2rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        margin-bottom: 50px;
+    }
+}
+
+@include  mobile-screen {
+    .caption {
+        font-size: 2.5rem;
+    }
+
+    .text {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        padding: 0 50px;
+        margin: 0 auto;
+
+        &--contact {
+            height: 50px;
+        }
+    }
+}
+

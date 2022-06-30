@@ -1,0 +1,200 @@
+@use './variables' as *;
+@use './mixin' as *;
+@use './function' as *;
+@use './breakpoint' as *;
+
+.footer { 
+    background-color: $footer-bg-color;
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fefefe;
+        margin-bottom: 35px;
+    }
+
+    &-top {
+        @include flex(flex-start, space-between);
+        gap: 130px;
+        padding: 140px 0 150px;
+
+        &-content {
+            &:first-child {
+                max-width: 370px;
+            }
+
+            &:nth-child(2) {
+                min-width: 170px;
+            }
+            
+            &:last-child {
+                flex-shrink: 1;
+            }
+    
+            &__logo {
+                margin-bottom: 55px;
+            }
+    
+            &__desc {
+                font-size: 1.6rem;
+                line-height: lineHeight(16px, 30px);
+                margin-bottom: 40px;
+            }
+        }
+
+        &-title {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 700;
+            text-transform: capitalize;
+            margin-bottom: 40px;
+        }
+    
+        &-social {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+    
+            &__icon {
+                color: #fff;
+    
+                &:hover {
+                    opacity: .5;
+                }
+            }
+        }
+    
+        &-list {
+            list-style: none;
+            line-height: lineHeight(16px, 30px);
+    
+            &__item {
+                margin-bottom: 25px;
+                
+                a {
+                    color: $third-color;
+                    font-size: 1.6rem;
+                    text-transform: capitalize;
+    
+                    span {
+                        text-transform: none;
+                    }
+                }
+            }
+        }
+
+        &-contact {
+            font-size: 1.6rem;
+            ul {
+                margin-bottom: 35px;
+                line-height: lineHeight(16px, 30px);
+
+                li{
+                    &:first-child  {
+                        margin-bottom: 5px;
+                    }
+
+                    span {
+                        color: #fff;
+                    }
+                }
+
+            }
+
+            p {
+                line-height: lineHeight(16px, 30px);
+            }
+        }
+    }
+
+    &-bottom {
+        background-color:$footer-bottom-bg-color;
+        font-size: 1.6rem;
+        line-height: lineHeight(22px, 35px);
+
+        &-container {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        span {
+            color: #fff;
+        }
+
+        &__rocket {
+            width: 65px;
+            height: 65px;
+            background-color: #4a44f2;
+            border-radius: 5px;
+            color: #fff;
+            @include flex(center, center);
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+// Responsive
+
+@include tablet-screen {
+    .footer {
+        &-top {
+            flex-wrap: wrap;
+            gap: 50px;
+            padding: 100px 0;
+
+            &:not(:last-child) {
+                justify-content: space-evenly;
+            }    
+            
+            &-content {
+                &:first-child {
+                    max-width: 400px;
+                }
+            }
+        }
+
+        &-bottom {
+            &-container {
+                padding: 40px 0;
+            }
+        }
+    }
+}
+
+@include mobile-screen {
+    .footer {
+        &-top {
+            padding: 50px 0;
+            gap: 30px;
+
+            &-content {
+                font-size: 1.4rem;
+
+                a,
+                &__desc {
+                    font-size: inherit;
+                }
+            }
+
+            &-list {
+                &__item {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+
+        &-bottom {
+            line-height: 2;
+            font-size: 1.4rem;
+
+            &__rocket {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}

@@ -1,0 +1,129 @@
+@use './function' as *;
+@use './variables' as *;
+@use './breakpoint' as *;
+@use './mixin' as *;
+
+.portfolio {
+    margin-bottom: 300px;
+    position: relative;
+    
+    &-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 90px;
+        margin-bottom: 100px;
+
+        &-scroll {
+            display: none;
+        }
+    }
+
+    &-item {
+        margin-bottom: 90px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &__img {
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        &__caption {
+            margin-bottom: 30px;
+        }
+
+        &__category {
+            font-size: 1.4rem;
+            line-height: lineHeight(14px, 34px);
+        }
+    }
+
+    &-btn {
+        margin: 0 auto;
+    }
+}
+
+// Responsive
+
+@include large-tablet-screen {
+    .portfolio {
+        margin-bottom: 200px;
+    }
+}
+
+@include tablet-screen {
+    .portfolio {
+        margin-bottom: 150px;
+
+        &-container {
+            margin-bottom: 80px;
+            column-gap: 50px;
+        }
+
+        &-item {
+            img {
+                margin-bottom: 30px;
+            }
+
+            &__caption {
+                font-size: 2.8rem;
+            }
+        }
+    }
+}
+
+@include mobile-screen {
+    .portfolio {
+        margin-bottom: 130px;
+       
+        &-container {
+            display: none;
+
+            &-scroll {
+                display: flex;
+                gap: 0 20px;
+                overflow-x: auto;
+            }
+        }
+
+        &-item {
+            height: 370px;
+            min-width: 70%;
+            padding: 10px;
+            margin-bottom: 0;
+            border: 2px solid rgba($primary-color, .2);
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            img {
+                width: 100%;
+                max-height: 50%;
+            }
+
+            &__caption {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        &-btn {
+            position: absolute;
+            top: calc(100% + 20px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+@include small-mobile-screen {
+    .portfolio {
+        &-item {
+            height: 350px;
+            min-width: 80%;
+        }
+    }
+}

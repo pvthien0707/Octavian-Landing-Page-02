@@ -1,0 +1,72 @@
+@use './breakpoint' as *;
+
+.blog {
+    margin-bottom: 150px;
+
+    &-header {
+        max-width: 570px;
+        text-align: center;
+        margin: 0 auto 90px;
+    }
+
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+    }
+
+    &-item {
+        img {
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            max-width: 300px;
+        }
+    }
+}
+
+// Responsive
+
+@include tablet-screen {
+    .blog {
+        margin-bottom: 120px;
+
+        &-header {
+            margin-bottom: 70px;
+        }
+
+        &-item {
+            h3 {
+                font-size: 2.6rem;
+            }
+        }
+    }
+}
+
+@include mobile-screen {
+    .blog {
+        margin-bottom: 80px;
+
+        &-header {
+            margin-bottom: 50px;
+        }
+
+        &-list {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px 20px;
+        }
+
+        &-item {
+            img {
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+                
+            }
+        }
+    }
+}
+

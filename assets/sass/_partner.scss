@@ -1,0 +1,47 @@
+@use './mixin' as *;
+@use './breakpoint' as *;
+
+.partner {
+    margin-bottom: 150px;
+    
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 95px 115px;
+
+        &__item {
+            @include flex(center, center);
+
+            &:hover {
+                opacity: .5;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// Responsive
+
+@include tablet-screen {
+    .partner {
+        margin-bottom: 100px;
+
+        &-list {
+            grid-template-columns: 1fr 1fr;
+            gap: 80px 50px;
+        }
+    }
+    
+}
+
+@include mobile-screen {
+    .partner {
+        margin-bottom: 50px;
+        
+        &-list {
+            row-gap: 50px;
+        }
+    }
+    
+}
+

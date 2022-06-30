@@ -1,0 +1,127 @@
+@use './variables' as *;
+@use './function' as *;
+@use './breakpoint' as *;
+
+
+.hero {
+    height: 965px;
+    position: relative;
+    margin-bottom: 190px;
+
+    &-content {
+        position: absolute;
+        bottom: 60%;
+        transform: translateY(50%);
+        z-index: 1;
+        color: $secondary-color;
+        font-family: $secondary-font;
+
+        &__caption {
+            font-size: 7.2rem;
+            font-weight: 600;
+            line-height: lineHeight(72px, 76px);
+        }
+
+        &__heading {
+            font-size: 15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 65px;
+        }
+
+        &__link {
+            font-weight: 600;
+            text-transform: capitalize;
+            text-decoration: underline;
+            color: $primary-color;
+        }
+    }
+
+    &-image {
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+// Responsive
+
+
+@include  large-tablet-screen {
+    .hero {
+        height: 580px;
+
+        &-content {
+            bottom: 50%;
+            
+            &__caption {
+                font-size: 6.2rem;
+                line-height: unset;
+                margin-bottom: 20px;
+            }
+
+            &__heading {
+                font-size: 12rem;
+                margin-bottom: 40px;
+            }
+        }
+    }
+}
+
+@include tablet-screen {
+    .hero {
+        height: 450px;
+        margin-bottom: 100px;
+
+        &-content {
+
+            &__caption {
+                font-size: 4.2rem;
+            }
+
+            &__heading {
+                font-size: 10rem;
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+@include mobile-screen {
+    .hero {
+        margin-bottom: 50px;
+        height: 210px;
+
+        &-content {
+
+            &__caption {
+                font-size: 2.2rem;
+            }
+
+            &__heading {
+                font-size: 5rem;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@include small-mobile-screen {
+    .hero {
+        height: 165px;
+
+        &-content {
+
+            &__caption {
+                font-size: 2.2rem;
+                margin-bottom: 10px;
+            }
+
+            &__heading {
+                font-size: 5rem;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
